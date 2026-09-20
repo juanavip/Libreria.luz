@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librería Luz - Módulo Web</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; background-color: #f4f6f9; }
+        h1 { color: #0f172a; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); margin-bottom: 20px; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+        button { padding: 8px 15px; background-color: #2563eb; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #1d4ed8; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
+        th { background-color: #0f172a; color: white; }
+    </style>
+</head>
+<body>
+
+    <h1>Gestión de Librería Luz (Spring Boot API)</h1>
+
+    <div class="card">
+        <h3>Registrar Nuevo Libro</h3>
+        <input type="text" id="titulo" placeholder="Título" required>
+        <input type="text" id="isbn" placeholder="ISBN" required>
+        <input type="number" id="precio" placeholder="Precio" step="0.01" required>
+        <input type="number" id="stock" placeholder="Stock" required>
+        <button onclick="guardarLibro()">Guardar Libro</button>
+    </div>
+
+    <div class="card">
+        <h3>Catálogo Registrado</h3>
+        <button onclick="cargarLibros()">Actualizar Lista</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>ISBN</th>
+                    <th>Precio</th>
+                    <th>Stock</th>
+                </tr>
+            </thead>
+            <tbody id="tablaLibros"></tbody>
+        </table>
+    </div>
+
+    <script>
+        const API_URL = '/api/libros';
+
+        async function cargarLibros() {
+            try {
+                const res = await fetch(API_URL);
+                const libros = await res.json();
+                const tbody = document.getElementById('tablaLibros');
+                tbody.innerHTML = '';
+                libros.forEach(l => {
+                    tbody.innerHTML += `<tr>
+                        <td>${l.id}</td>
+                        <td>${l.titulo}</td>
+                        <td>${l.isbn}</td>
+                        <td>$${l.precio}</td>
+                        <td>${l.stock}</td>
+                    </tr>`;
+                });
+            } catch (error) {
+                console.error("Error al cargar libros:", error);
+            }
+        }
+
+        async function guardarLibro() {
+            const libro = {
+                titulo: document.getElementById('titulo').value,
+                isbn: document.getElementById('isbn').value,
+                precio: parseFloat(document.getElementById('precio').value),
+                stock: parseInt(document.getElementById('stock').value)
+            };
+
+            await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(libro)
+            });
+
+            document.getElementById('titulo').value = '';
+            document.getElementById('isbn').value = '';
+            document.getElementById('precio').value = '';
+            document.getElementById('stock').value = '';
+            cargarLibros();
+        }
+
+        cargarLibros();
+    </script>
+</body>
+</html>

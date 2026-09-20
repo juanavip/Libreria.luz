@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Librería Luz - Gestión de Catálogo</title>
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- FontAwesome para los íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fuente Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header / Nav -->
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-book-bookmark"></i>
+            <span>Librería Luz</span>
+        </div>
+        <div class="status-badge">
+            <span class="dot"></span>
+            <span>Frontend Conectado</span>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="main-container">
+        
+        <!-- Formulario Lateral -->
+        <section class="card form-card">
+            <div class="card-header">
+                <i class="fa-solid fa-circle-plus icon-blue"></i>
+                <h2>Registrar Nuevo Libro</h2>
+            </div>
+            
+            <form id="bookForm">
+                <div class="form-group">
+                    <label for="titulo">Título del Libro</label>
+                    <input type="text" id="titulo" placeholder="Ej. Programar desde cero" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="isbn">Código (4 dígitos)</label>
+                    <input type="text" id="isbn" placeholder="Ej. 1001" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="precio">Precio ($)</label>
+                    <input type="number" id="precio" placeholder="0" min="0" step="any" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" placeholder="0" min="0" required>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    <i class="fa-solid fa-floppy-disk"></i> Guardar Libro
+                </button>
+            </form>
+        </section>
+
+        <!-- Tabla de Resultados -->
+        <section class="card table-card">
+            <div class="card-header space-between">
+                <div class="title-with-icon">
+                    <i class="fa-solid fa-list-check icon-blue"></i>
+                    <h2>Catálogo Registrado</h2>
+                </div>
+                <button id="btnReload" class="btn-secondary">
+                    <i class="fa-solid fa-rotate-right"></i> Actualizar Lista
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Código</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaLibros">
+                        <!-- Carga dinámica vía JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- JavaScript Principal -->
+    <script src="js/main.js"></script>
+</body>
+</html>
