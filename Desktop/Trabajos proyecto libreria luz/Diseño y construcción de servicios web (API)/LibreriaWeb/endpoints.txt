@@ -1,0 +1,22 @@
+==================================================
+PROYECTO: Librería Luz - API REST de Autenticación
+APRENDIZ: Juan Sebastián Ávila Patiño
+PROGRAMA: Análisis y Desarrollo de Software (SENA)
+==================================================
+
+URL BASE DEL SERVICIO:
+http://localhost:8080
+
+LISTADO DE ENDPOINTS:
+
+1. Registro de Usuario
+   - Ruta: /api/auth/registro
+   - Método HTTP: POST
+   - Descripción: Recibe los datos del usuario, cifra la contraseña utilizando el algoritmo BCrypt y almacena el registro en la base de datos MySQL.
+   - Códigos de respuesta: 201 Created / 400 Bad Request / 409 Conflict
+
+2. Inicio de Sesión (Login)
+   - Ruta: /api/auth/login
+   - Método HTTP: POST
+   - Descripción: Valida las credenciales de acceso comparando el correo y la contraseña cifrada almacenada en la base de datos.
+   - Códigos de respuesta: 200 OK / 401 Unauthorized
