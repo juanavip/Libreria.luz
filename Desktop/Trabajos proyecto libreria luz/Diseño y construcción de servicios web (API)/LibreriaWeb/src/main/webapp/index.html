@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Librería Luz</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-book-bookmark"></i>
+            <span>Librería Luz</span>
+        </div>
+        <div class="badge-status">
+            <i class="fa-solid fa-circle-check"></i> Spring Boot API Connected
+        </div>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="container">
+        
+        <!-- FORMULARIO DE REGISTRO -->
+        <section class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-circle-plus icon"></i>
+                <h2>Registrar Nuevo Libro</h2>
+            </div>
+            
+            <form id="bookForm" class="form-grid">
+                <div class="form-group">
+                    <label for="titulo">Título del Libro</label>
+                    <input type="text" id="titulo" placeholder="Ej. Programar desde cero" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="isbn">Código (4 dígitos)</label>
+                    <input type="text" id="isbn" placeholder="Ej. 1001" maxlength="4" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="precio">Precio ($)</label>
+                    <input type="number" id="precio" placeholder="0" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="stock">Stock</label>
+                    <input type="number" id="stock" placeholder="0" min="0" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-floppy-disk"></i> Guardar Libro
+                </button>
+            </form>
+        </section>
+
+        <!-- TABLA DEL CATÁLOGO -->
+        <section class="card">
+            <div class="card-header-flex">
+                <div class="card-header">
+                    <i class="fa-solid fa-list-check icon"></i>
+                    <h2>Catálogo Registrado</h2>
+                </div>
+                <button id="btnReload" class="btn btn-secondary">
+                    <i class="fa-solid fa-rotate-right"></i> Actualizar Lista
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Código</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaLibros">
+                        <!-- Las filas se renderizan dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

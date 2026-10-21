@@ -1,0 +1,11 @@
+com\librerialuz\repository\UsuarioRepository.class
+com\librerialuz\model\Usuario.class
+com\librerialuz\servlet\LibroServlet.class
+com\librerialuz\dao\impl\LibroDAOImpl.class
+com\librerialuz\model\Libro.class
+com\librerialuz\controller\AuthController.class
+com\librerialuz\LibreriaApplication.class
+com\librerialuz\service\AuthService.class
+com\librerialuz\repository\LibroRepository.class
+com\librerialuz\config\DatabaseConnection.class
+com\librerialuz\dao\LibroDAO.class
